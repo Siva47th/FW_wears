@@ -45,7 +45,7 @@ export default function Navbar() {
     <>
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled
+          isScrolled || isMobileMenuOpen
             ? "bg-brand-black/95 backdrop-blur-md py-3 shadow-lg border-b border-white/5"
             : "bg-gradient-to-b from-black/80 via-black/40 to-transparent py-4 sm:py-5"
         }`}
@@ -139,7 +139,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-40 bg-brand-black/98 backdrop-blur-xl flex flex-col pt-20 pb-8 px-6 overflow-y-auto"
+            className="fixed inset-0 z-40 bg-brand-black flex flex-col pt-20 pb-8 px-6 overflow-y-auto"
           >
             {/* Main Nav Links */}
             <div className="flex flex-col gap-4 py-4 border-b border-white/10">
@@ -168,14 +168,14 @@ export default function Navbar() {
               {/* Direct View Bag link in drawer */}
               <Link
                 href="/cart"
-                className="text-white/80 text-base tracking-[0.15em] uppercase font-light hover:text-brand-gold hover:translate-x-2 transition-all flex items-center justify-between pt-2 border-t border-white/5"
+                className="text-white/90 text-base tracking-[0.15em] uppercase font-light hover:text-brand-gold hover:translate-x-2 transition-all flex items-center justify-between pt-2 border-t border-white/5"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 <span className="flex items-center gap-2">
                   <ShoppingBag size={16} className="text-brand-gold" />
                   <span>View Shopping Bag</span>
                 </span>
-                <span className="px-2 py-0.5 bg-brand-gold text-brand-black text-xs font-bold rounded-full">
+                <span className="px-2.5 py-0.5 bg-brand-gold text-brand-black text-xs font-bold rounded-full">
                   {totalItems}
                 </span>
               </Link>
@@ -202,14 +202,14 @@ export default function Navbar() {
                         ? "bg-red-950/40 border-red-500/40 text-red-300 hover:border-red-400"
                         : slug === "exclusive"
                         ? "bg-brand-gold/15 border-brand-gold/40 text-brand-gold hover:border-brand-gold"
-                        : "bg-white/5 border-white/5 text-white hover:border-brand-gold"
+                        : "bg-white/5 border-white/10 text-white hover:border-brand-gold/60 hover:bg-white/10"
                     }`}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     <p className="text-xs font-medium line-clamp-1">
                       {col.name}
                     </p>
-                    <p className="text-white/40 text-[10px] mt-0.5 tracking-wider">
+                    <p className="text-white/60 text-[10px] mt-0.5 tracking-wider">
                       {col.tag}
                     </p>
                   </Link>
@@ -227,7 +227,7 @@ export default function Navbar() {
                 <Flame size={16} />
                 <span>Shop 50% Off Special Deals</span>
               </Link>
-              <p className="text-white/40 text-[11px] text-center tracking-wider font-light">
+              <p className="text-white/60 text-[11px] text-center tracking-wider font-light">
                 Express Delivery Across India • ₹ INR Accepted
               </p>
             </div>
